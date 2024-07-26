@@ -1,0 +1,1 @@
+{"LV":3,"HP":37.0,"MAXHP":44.0,"Exp":390.0,"LVUpExp":460.0,"Atk_Speed":1.2000000476837159,"CUR_Atk_speed":0.12000061571598053,"Coin":250.0,"PlayerName":"Awefa","IsAtkItem":false,"IsDefItem":false,"IsSkilCool":false,"IsSkiIitem":false,"IsSkilitem1":false,"AtkItem":0,"DefItem":0,"SkilCool":0,"IsSaveCreated":true}
