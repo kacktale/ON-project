@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class SaveData
 {
+    public float ATK = 1f;
     public int LV = 1;
     public float HP = 20;
     public float MAXHP = 20;
@@ -116,6 +117,7 @@ public class SaveAndLoad : MonoBehaviour
             data.Exp = 0;
             data.MAXHP += 12;
             data.HP = data.MAXHP;
+            data.ATK++;
         }
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CamStartMove : MonoBehaviour
 {
-    public 
     Camera cam;
     Transform camT;
     // Start is called before the first frame update
@@ -28,7 +27,7 @@ public class CamStartMove : MonoBehaviour
             return;
         }
         {
-            cam.orthographicSize += Time.deltaTime * 2;
+            cam.orthographicSize += Time.deltaTime * 4;
         }
     }
 }

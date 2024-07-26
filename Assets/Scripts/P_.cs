@@ -9,6 +9,7 @@ public class P_ : MonoBehaviour
     public float P_Hp;
     public float P_EXP;
     public float P_atkspeed;
+    public float P_ATK;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class P_ : MonoBehaviour
         P_Hp = SNL.data.HP;
         P_EXP = SNL.data.Exp;
         P_atkspeed = SNL.data.CUR_Atk_speed;
+        P_ATK = SNL.data.ATK;
 
         if(P_Hp <= 0)
         {
