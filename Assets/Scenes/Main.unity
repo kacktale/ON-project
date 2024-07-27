@@ -355,7 +355,6 @@ GameObject:
   - component: {fileID: 121364186}
   - component: {fileID: 121364189}
   - component: {fileID: 121364188}
-  - component: {fileID: 121364190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -490,23 +489,7 @@ MonoBehaviour:
   P_Hp: 0
   P_EXP: 0
   P_atkspeed: 0
---- !u!114 &121364190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121364185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 76384cac24850064da3b1fcfd86d8a6e, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
+  P_ATK: 0
 --- !u!1 &158380193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ec4220692ac1449bf330b6d9f7e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &698618075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,11 +1676,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c5ed4dd5223d849b8a32ed107ae50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAlpha: {fileID: 121364186}
   P_position: {fileID: 121364187}
   IsTouched: 0
   m_speed: 0.3
-  E_HP: 10
-  E_AtkSpeed: 1.5
+  E_MaxHP: 10
+  E_MaxAtkSpeed: 1.5
   E_Exp: 30
   E_coin: 10
 --- !u!61 &899160847
@@ -2961,11 +2944,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c5ed4dd5223d849b8a32ed107ae50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAlpha: {fileID: 121364186}
   P_position: {fileID: 121364187}
   IsTouched: 0
   m_speed: 0.3
-  E_HP: 10
-  E_AtkSpeed: 1.5
+  E_MaxHP: 10
+  E_MaxAtkSpeed: 1.5
   E_Exp: 30
   E_coin: 10
 --- !u!61 &1852184332
@@ -3312,6 +3296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+    ATK: 1
     LV: 1
     HP: 20
     MAXHP: 20

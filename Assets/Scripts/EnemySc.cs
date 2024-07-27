@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class EnemySc : MonoBehaviour
 {
     [Header("플레이어 인식")]
     SaveAndLoad SNL;
+    public SpriteRenderer PlayerAlpha;
     public Transform P_position;
     [Header("적 설정")]
     public bool IsTouched = false;//적 인식
@@ -16,10 +18,12 @@ public class EnemySc : MonoBehaviour
     public float E_MaxAtkSpeed = 1.5f;//적 최대 공격속도
     public float E_Exp = 30;//적 경험치
     public float E_coin = 10;//적 코인
+    SpriteRenderer E_alpha;
 
     // Start is called before the first frame update
     void Awake()
     {
+        E_alpha = GetComponent<SpriteRenderer>();
         SNL = GameObject.Find("Click").GetComponent<SaveAndLoad>();
     }
     private void Start()
@@ -48,6 +52,7 @@ public class EnemySc : MonoBehaviour
         {
             SNL.data.HP -= SNL.data.LV;
             E_AtkSpeed = E_MaxAtkSpeed;
+            P_DMG();
         }
         else if(E_AtkSpeed > 0 && IsTouched)
         {
@@ -63,6 +68,7 @@ public class EnemySc : MonoBehaviour
         {
             SNL.data.CUR_Atk_speed = SNL.data.Atk_Speed;
             E_HP -= SNL.data.ATK;
+            E_DMG();
             Debug.Log(E_HP);
         }
         else
@@ -77,6 +83,24 @@ public class EnemySc : MonoBehaviour
             SNL.data.Exp += E_Exp;
             Destroy(gameObject);
         }
+    }
+    public void P_DMG()
+    {
+        PlayerAlpha.color = new Color(255,0,0);
+        Invoke("P_OFFDMG", 0.5f);
+    }
+    void P_OFFDMG()
+    {
+        PlayerAlpha.DOColor(new Color(255,255,255),0.5f);//놀랍게도 서서히 안됨 WA!
+    }
+    public void E_DMG()
+    {
+        E_alpha.color = new Color(255, 0, 0);
+        Invoke("E_OFFDMG", 0.5f);
+    }
+    void E_OFFDMG()
+    {
+        E_alpha.color = Color.white;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
