@@ -37,8 +37,10 @@ public class SaveAndLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        data.Atk_Speed = 1.2f;
+        data.CUR_Atk_speed = 1.2f;
         SAVE_DATA_DIRECTORY = Application.dataPath + "/Saves/";
-            LoadData();
+        LoadData();
     }
 
     public void SaveData()

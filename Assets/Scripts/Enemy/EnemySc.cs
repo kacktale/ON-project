@@ -1,11 +1,13 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySc : MonoBehaviour
 {
     [Header("플레이어 인식")]
+    P_ player;
     SaveAndLoad SNL;
     public SpriteRenderer PlayerAlpha;
     public Transform P_position;
@@ -23,6 +25,9 @@ public class EnemySc : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        player = GameObject.Find("Player").GetComponent<P_>();
+        PlayerAlpha = GameObject.Find("Player").GetComponent<SpriteRenderer>();
+        P_position = GameObject.Find("Player").GetComponent<Transform>();
         E_alpha = GetComponent<SpriteRenderer>();
         SNL = GameObject.Find("Click").GetComponent<SaveAndLoad>();
     }
@@ -52,7 +57,7 @@ public class EnemySc : MonoBehaviour
         {
             SNL.data.HP -= SNL.data.LV;
             E_AtkSpeed = E_MaxAtkSpeed;
-            P_DMG();
+            player.P_DMG();
         }
         else if(E_AtkSpeed > 0 && IsTouched)
         {
@@ -83,15 +88,6 @@ public class EnemySc : MonoBehaviour
             SNL.data.Exp += E_Exp;
             Destroy(gameObject);
         }
-    }
-    public void P_DMG()
-    {
-        PlayerAlpha.color = new Color(255,0,0);
-        Invoke("P_OFFDMG", 0.5f);
-    }
-    void P_OFFDMG()
-    {
-        PlayerAlpha.DOColor(new Color(255,255,255),0.5f);//놀랍게도 서서히 안됨 WA!
     }
     public void E_DMG()
     {
