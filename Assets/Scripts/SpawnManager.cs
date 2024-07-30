@@ -9,10 +9,12 @@ public class SpawnManager : MonoBehaviour
     public TMP_Text Stage_Text; // 스테이지 시작시 나오는 텍스트
     public TMP_Text Stage_Timer; // 남은 스테이지 타임 표시 
     public GameObject Next_Text; // GOOD 나중에 수정
-    public float Stage_Num = 1; // 표시되는 스테이지 넘버
+    public int Stage_Num = 1; // 표시되는 스테이지 넘버
     public float Stage_Time = 10; // 한 스테이지 당 타임
     public float Ready_Time = 2.5f;
     private bool End_Stage = false; // 스테이지가 끝났는가
+
+     private SaveAndLoad SNL;
 
     public Ease ease;
 
@@ -31,7 +33,7 @@ public class SpawnManager : MonoBehaviour
         if (Stage_Time <= 0) // 만약 스테이지 타임이 0이면 다음 스테이지 준비
         {
             End_Stage = true;
-            DestroyAllEnemies(); // 모든 적 제거
+            //DestroyAllEnemies(); // 모든 적 제거
             StopCoroutine("SpawnEnemies"); // 적 스폰 멈추기
             Next_Text.SetActive(true); // GOOD 화면에 표시
             Stage_Num++; // 스테이지 넘버 올라감 
@@ -86,8 +88,8 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator Stage_Notice() // 코루틴 애니메이션
     {
-        Stage_Text.transform.DOMoveY(2, 1f).SetEase(ease);
+        Stage_Text.transform.DOLocalMove(new Vector3(0, 300, 0), 1f).SetEase(Ease.InQuint);
         yield return new WaitForSeconds(2f);
-        Stage_Text.transform.DOMoveY(7, 1f).SetEase(ease);
+        Stage_Text.transform.DOLocalMove(new Vector3(0, 700, 0), 1f).SetEase(Ease.InQuint);
     }
 }

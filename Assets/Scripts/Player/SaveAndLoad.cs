@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SaveData
 {
     public float ATK = 1f;
+    public float Def;
     public int LV = 1;
     public float HP = 20;
     public float MAXHP = 20;
@@ -19,13 +20,23 @@ public class SaveData
     public string PlayerName;
     public bool IsAtkItem = false;
     public bool IsDefItem = false;
+    public bool IsHpItem = false;
     public bool IsSkilCool = false;
     public bool IsSkiIitem = false;
     public bool IsSkilitem1 = false;
     public int AtkItem = 0;
     public int DefItem = 0;
+    public int HpItem = 0;
+    public int Stage = 0;
+
+    public int ItemA_Pieces = 0;
+    public int ItemB_Pieces = 0;
+    public int ItemC_Pieces = 0;
+
     public int SkilCool = 0;
     public bool IsSaveCreated = false;
+
+ 
 }
 
 public class SaveAndLoad : MonoBehaviour
@@ -46,25 +57,25 @@ public class SaveAndLoad : MonoBehaviour
     public void SaveData()
     {
 
-        // °ÔÀÓ µ¥ÀÌÅÍ ÀúÀå
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(SAVE_DATA_DIRECTORY + SAVE_FILE_NAME, json);
     }
 
     public void LoadData()
     {
-        // °ÔÀÓ µ¥ÀÌÅÍ ·Îµå
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
         if (File.Exists(SAVE_DATA_DIRECTORY + SAVE_FILE_NAME))
         {
             string loadJson = File.ReadAllText(SAVE_DATA_DIRECTORY + SAVE_FILE_NAME);
             data = JsonUtility.FromJson<SaveData>(loadJson);
 
-            Debug.Log("·Îµå ¿Ï·á");
+            Debug.Log("ï¿½Îµï¿½ ï¿½Ï·ï¿½");
             Debug.Log(loadJson);
         }
         else
         {
-            Debug.Log("¼¼ÀÌºê ÆÄÀÏÀÌ ¾ø½À´Ï´Ù");
+            Debug.Log("ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
         }
     }
 
@@ -79,10 +90,10 @@ public class SaveAndLoad : MonoBehaviour
     }
     public void ResetData()
     {
-        // µ¥ÀÌÅÍ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         data = new SaveData();
 
-        Debug.Log("µ¥ÀÌÅÍ ¸®¼Â ¿Ï·á");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
         data.IsSaveCreated = false;
         SceneManager.LoadScene("CreatePlayerName");
     }
@@ -100,19 +111,24 @@ public class SaveAndLoad : MonoBehaviour
         {
             data.HP = data.MAXHP;
         }
-        if (data.AtkItem >= 100)
+        // ì•„ì´í…œì´ ìžˆëŠ”ì§€ ì²´í¬
+       /* if(data.IsHpItem)
         {
-            data.IsAtkItem = true;
+
         }
-        if(data.DefItem >= 100)
+        if (data.IsAtkItem)
         {
-            data.IsDefItem = true;
+
         }
-        if(data.SkilCool >= 100)
+        if (data.IsDefItem)
+        {
+
+        }*/
+        if (data.SkilCool >= 100)
         {
             data.IsSkilCool = true;
         }
-        if(data.Exp >= data.LVUpExp)
+        if (data.Exp >= data.LVUpExp)
         {
             data.LV++;
             data.LVUpExp += data.Exp;

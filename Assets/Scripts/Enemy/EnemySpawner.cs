@@ -15,14 +15,14 @@ public class EnemySpawner : MonoBehaviour
     {
         if(EnemySpawnCount < 5)
         {
-            Debug.Log("ÀûÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù. ´©Àû »ý¼º È½¼ö : " + EnemySpawnCount);
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ : " + EnemySpawnCount);
             Instantiate(Enemy, transform.position, Quaternion.identity);
             EnemySpawnCount++;
             Invoke("E_SPawn", 1);
         }
         else
         {
-            Debug.Log("5¹ø »ý¼ºÀÌ ¾ú½À´Ï´Ù. 20ÃÊÀÇ ÈÞ½ÄÀ» °¡Áö¼¼¿ä");
+            Debug.Log("5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. 20ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             EnemySpawnCount = 0;
             Invoke("E_SPawn", 20);
         }

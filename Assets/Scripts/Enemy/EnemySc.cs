@@ -6,20 +6,20 @@ using UnityEngine;
 
 public class EnemySc : MonoBehaviour
 {
-    [Header("ÇÃ·¹ÀÌ¾î ÀÎ½Ä")]
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Î½ï¿½")]
     P_ player;
     SaveAndLoad SNL;
     public SpriteRenderer PlayerAlpha;
     public Transform P_position;
-    [Header("Àû ¼³Á¤")]
-    public bool IsTouched = false;//Àû ÀÎ½Ä
-    public float m_speed = 0.1f;//Àû ÀÌ¼Ó
-    float E_HP = 10f;//Àû ÇöÀç ÇÇ
-    public float E_MaxHP = 10f;//Àû ÃÖ´ë ÇÇ
-    float E_AtkSpeed = 1.5f;//Àû °ø°Ý¼Óµµ
-    public float E_MaxAtkSpeed = 1.5f;//Àû ÃÖ´ë °ø°Ý¼Óµµ
-    public float E_Exp = 30;//Àû °æÇèÄ¡
-    public float E_coin = 10;//Àû ÄÚÀÎ
+    [Header("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public bool IsTouched = false;//ï¿½ï¿½ ï¿½Î½ï¿½
+    public float m_speed = 0.1f;//ï¿½ï¿½ ï¿½Ì¼ï¿½
+    float E_HP = 10f;//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public float E_MaxHP = 10f;//ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
+    float E_AtkSpeed = 1.5f;//ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¼Óµï¿½
+    public float E_MaxAtkSpeed = 1.5f;//ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Ý¼Óµï¿½
+    public float E_Exp = 30;//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
+    public float E_coin = 10;//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     SpriteRenderer E_alpha;
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class EnemySc : MonoBehaviour
     private void Start()
     {
         E_MaxHP += SNL.data.LV;
-        E_HP += SNL.data.LV;
+        E_HP += SNL.data.LV * 3;
         E_coin += SNL.data.LV * 2;
         E_Exp += SNL.data.LV;
         E_AtkSpeed = E_MaxAtkSpeed;
@@ -43,7 +43,7 @@ public class EnemySc : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //ÀÎ½Ä ÈÄ ¸ØÃã
+        //ï¿½Î½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (transform.position.x <= P_position.position.x + 3 || IsTouched)
         {
             IsTouched = true;
@@ -52,10 +52,10 @@ public class EnemySc : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, P_position.position, m_speed);
         }
-        //Àû °ø°Ý
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(E_AtkSpeed <= 0)
         {
-            SNL.data.HP -= SNL.data.LV;
+            SNL.data.HP -= SNL.data.LV - SNL.data.Def;
             E_AtkSpeed = E_MaxAtkSpeed;
             player.P_DMG();
         }
@@ -68,7 +68,7 @@ public class EnemySc : MonoBehaviour
             SNL.data.Exp += E_Exp;
             Destroy(gameObject);
         }
-        //ÇÃ·¹ÀÌ¾î °ø°Ý
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (SNL.data.CUR_Atk_speed <= 0 && IsTouched)
         {
             SNL.data.CUR_Atk_speed = SNL.data.Atk_Speed;
@@ -80,7 +80,7 @@ public class EnemySc : MonoBehaviour
         {
             SNL.data.CUR_Atk_speed -= Time.deltaTime;
         }
-        //Àû 4¸Á
+        //ï¿½ï¿½ 4ï¿½ï¿½
         if (E_HP <= 0)
         {
             SNL.data.Coin += E_coin;

@@ -7,12 +7,13 @@ public class P_ : MonoBehaviour
     SkillImage Skillauto;
     SpriteRenderer spriteRenderer;
     SaveAndLoad SNL;
-    [Header("½ºÅÈ(¼öÁ¤ºÒ°¡)")]
+    [Header("ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½)")]
     public float P_Hp;
     public float P_EXP;
     public float P_atkspeed;
     public float P_CURAtkSpeed;
     public float P_ATK;
+    public float P_DEF;
     public bool IsAuto = true;
 
     private void Awake()
@@ -29,6 +30,7 @@ public class P_ : MonoBehaviour
         P_atkspeed = SNL.data.Atk_Speed;
         P_CURAtkSpeed = SNL.data.CUR_Atk_speed;
         P_ATK = SNL.data.ATK;
+        P_DEF = SNL.data.Def;
 
         if(P_Hp <= 0)
         {
