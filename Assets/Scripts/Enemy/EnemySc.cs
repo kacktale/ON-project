@@ -69,7 +69,7 @@ public class EnemySc : MonoBehaviour
             Destroy(gameObject);
         }
         //플레이어 공격
-        if (SNL.data.CUR_Atk_speed <= 0)
+        if (SNL.data.CUR_Atk_speed <= 0 && IsTouched)
         {
             SNL.data.CUR_Atk_speed = SNL.data.Atk_Speed;
             E_HP -= SNL.data.ATK;
