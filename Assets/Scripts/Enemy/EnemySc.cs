@@ -34,7 +34,7 @@ public class EnemySc : MonoBehaviour
     private void Start()
     {
         E_MaxHP += SNL.data.LV;
-        E_HP += SNL.data.LV * 3;
+        E_HP = E_MaxHP;
         E_coin += SNL.data.LV * 2;
         E_Exp += SNL.data.LV;
         E_AtkSpeed = E_MaxAtkSpeed;
@@ -44,7 +44,7 @@ public class EnemySc : MonoBehaviour
     void FixedUpdate()
     {
         //�ν� �� ����
-        if (transform.position.x <= P_position.position.x + 3 || IsTouched)
+        if (transform.position.x <= P_position.position.x + 3)
         {
             IsTouched = true;
         }

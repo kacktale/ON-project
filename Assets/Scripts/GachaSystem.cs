@@ -16,9 +16,11 @@ public class GachaSystem : MonoBehaviour
     public TMP_Text coinText; // 현재 코인을 표시할 UI 텍스트
 
     private SaveAndLoad saveAndLoad;
+    private AudioSource GatchaSEF;
 
     void Start()
     {
+        GatchaSEF = GetComponents<AudioSource>()[1];
         saveAndLoad = FindObjectOfType<SaveAndLoad>();
 
         items = new List<Item> // 아이템 설정
@@ -50,6 +52,7 @@ public class GachaSystem : MonoBehaviour
         {
             saveAndLoad.data.Coin -= cost; // 코인 소모
             DrawPieces(numberOfDraws);
+            GatchaSEF.Play();
         }
         else
         {

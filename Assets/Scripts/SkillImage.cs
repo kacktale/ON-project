@@ -41,9 +41,11 @@ public class SkillImage : MonoBehaviour
         Transform.DOLocalMove(new Vector3(-622, 288, 0), 0.5f).SetEase(Ease.InQuint);
         yield return new WaitForSeconds(1.5f);
         Transform.DOLocalMove(new Vector3(-1514, -604, 0), 0.5f).SetEase(Ease.OutQuint);
-        SNL.data.Atk_Speed /= 2;
+        SNL.data.Atk_Speed /= 2f -SNL.data.LV/9f;
+        SNL.data.HP = SNL.data.MAXHP;
         yield return new WaitForSeconds(3.5f);
-        SNL.data.Atk_Speed *= 2;
+        BTN.color = new Color(0,0,0,0.4f);
+        SNL.data.Atk_Speed =1.2f;
         yield return new WaitForSeconds(7);
         BTN.color = Color.white;
         Ispressd = false;

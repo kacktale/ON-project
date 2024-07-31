@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class P_ : MonoBehaviour
 {
@@ -34,7 +35,20 @@ public class P_ : MonoBehaviour
 
         if(P_Hp <= 0)
         {
-            SNL.data.HP = SNL.data.MAXHP;
+            SNL.data.HP = 20;
+            SNL.data.MAXHP = 20;
+            SNL.data.Exp = 0;
+            SNL.data.LVUpExp = 100;
+            SNL.data.ATK = 1f;
+            SNL.data.LV = 1;
+            SNL.data.Atk_Speed = 1.2f;
+            SNL.data.CUR_Atk_speed = 1.2f;
+            SNL.data.Coin = 0;
+            SNL.data.ItemA_Pieces = 0;
+            SNL.data.ItemB_Pieces = 0;
+            SNL.data.ItemC_Pieces = 0;
+            SNL.data.IsSkilCool = false;
+            SceneManager.LoadScene("GameOver");
         }
         if (IsAuto)
         {

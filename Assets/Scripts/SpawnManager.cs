@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SNL = FindAnyObjectByType<SaveAndLoad>();
         Next_Text.SetActive(false); // GOOD 제거
         Start_Stage(); // 스테이지 시작 
     }
@@ -67,14 +68,19 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            float SpawnTimeMin = 0.3f - (Stage_Num * 0.01f + SNL.data.LV/2f -1);
+            if (0.3f - (Stage_Num * 0.01f + SNL.data.LV -1) >= (2f - (Stage_Num * 0.1f)))
+            {
+                SpawnTimeMin = 2f - (Stage_Num * 0.1f) - 0.1f;
+            }
             SpawnEnemy();
-            yield return new WaitForSeconds(Random.Range(0.3f - (Stage_Num * 0.01f), (2f - (Stage_Num * 0.1f)))); // Range 안의 값은 수정 예정
+            yield return new WaitForSeconds(Random.Range(SpawnTimeMin, (2f - (Stage_Num * 0.1f)))); // Range 안의 값은 수정 예정
         }
     }
 
     public void SpawnEnemy() // 적 생성
     {
-        Instantiate(Enemy_Prefab, new Vector3(7.3f, -3f, 0), Quaternion.identity);
+        Instantiate(Enemy_Prefab, new Vector3(7.3f, -2.25f, 0), Quaternion.identity);
     }
 
     private void DestroyAllEnemies() // 몬스터 전체 삭제

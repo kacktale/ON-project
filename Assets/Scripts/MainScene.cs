@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainScene : MonoBehaviour
 {
+    AudioStop audioStop;
     bool IsExit = false;
     bool IsInv = false;
     public GameObject Exit;
@@ -13,6 +14,7 @@ public class MainScene : MonoBehaviour
 
     private void Start()
     {
+        audioStop = GetComponent<AudioStop>();
         Exit.SetActive(false);
     }
     // Update is called once per frame
@@ -22,12 +24,14 @@ public class MainScene : MonoBehaviour
         {
             if(!IsExit)
             {
+                audioStop.PauseAudi();
                 Exit.SetActive(true);
                 Time.timeScale = 0;
                 IsExit = true;
             }
             else
             {
+                audioStop.StartAudi();
                 Exit.SetActive(false);
                 Time.timeScale = 1;
                 IsExit = false;
@@ -49,6 +53,7 @@ public class MainScene : MonoBehaviour
     }
     public void StilPlaying()
     {
+        audioStop.StartAudi();
         Exit.SetActive(false);
         Time.timeScale = 1;
         IsExit = false;
