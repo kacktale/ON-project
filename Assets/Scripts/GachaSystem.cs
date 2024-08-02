@@ -110,7 +110,7 @@ public class GachaSystem : MonoBehaviour
                         result += $"{drawnItem.itemName} 아이템을 완성했습니다!\n";
                         saveAndLoad.data.ItemC_Pieces -= 3;
                         saveAndLoad.data.DefItem++;
-                        saveAndLoad.data.Def += 0.1f; // 예시: Def 증가
+                        saveAndLoad.data.Def += 0.5f; // 예시: Def 증가
                     }
                     else
                     {
